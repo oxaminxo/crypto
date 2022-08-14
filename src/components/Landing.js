@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // Api
 import { getData } from '../services/api';
+import Coin from './shared/Coin';
 const Landing = () => {
 
     const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ const Landing = () => {
             <input type='text' placeholder='Search' />
             
             {
-                data.map(item => <h3 key={item.id}>{item.name}</h3>)
+                data.map(item => <Coin key={item.id} data={item} />)
             }
         </div>
     );
