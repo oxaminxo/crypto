@@ -6,6 +6,9 @@ import { getData } from '../services/api';
 // Component
 import Coin from './shared/Coin';
 
+// Styles
+import styles from "./Landing.module.css";
+
 const Landing = () => {
 
     const [data, setData] = useState([]);
@@ -29,10 +32,16 @@ const Landing = () => {
     return (
         <div style={{textAlign: 'center'}}>
 
-            <input type='text' placeholder='Search' value={search} onChange={searchHandler} />
+            <input className={styles.input} type='text' placeholder='Search' value={search} onChange={searchHandler} />
             
             {
-                searchData.map(item => <Coin key={item.id} data={item} />)
+                data.length ?
+                <div className={styles.coinContainer}>
+                    {
+                        searchData.map(item => <Coin key={item.id} data={item} />)
+                    }
+                </div> :
+                <h1>Loading...</h1>
             }
         </div>
     );
